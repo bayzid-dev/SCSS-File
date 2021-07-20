@@ -1,0 +1,82 @@
+
+// The Example of varible 
+@import "nav";      
+@import "variable";
+
+
+
+/* browser reset code */
+*{
+    margin: 0;
+    padding: 0;
+    
+  }   
+main{
+    background-color: $main-bgcolor;
+}
+header{
+    background-color: $header-bgcolor;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+// example of mixin & include
+@mixin para-style{
+ font-size: 1.2em;
+  margin: .8rem .2em;
+  text-align: justify;
+  p{
+    margin-top: .4rem;
+  }
+}
+
+#about{
+    @include para-style;
+}
+#Education{
+  @include para-style;
+}
+
+// the example of extend & inheritance
+.btn {
+  padding: .3rem .7rem;
+  font-size: 1em;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: .5em;
+
+}
+.btn-download{
+  @extend .btn; 
+}
+.btn-site{
+  @extend .btn;
+}
+.center{
+  text-align: center;
+}
+
+// the example of @if,@else if
+@mixin setFontSize($value){
+  @if value == small{
+    font-size: 8rem;
+  }
+  @else if value == medium {
+    font-size: 1em;
+  }
+  @else {
+    font-size: 1.5rem;
+  }
+}
+footer{
+    background-color: $footer-bgcolor;
+    @include setFontSize();
+}
+
+
+// example of each
+
+@each $color in blue, red , green {
+  .#{$color}-text {color : $color}
+}
